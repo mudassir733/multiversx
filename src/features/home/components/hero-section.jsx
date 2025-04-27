@@ -166,10 +166,10 @@ export default function HeroSection() {
             <div className="w-full px-4 py-12 md:py-16">
                 <div className="w-full mx-auto">
 
-                    <div className="flex gap-4 justify-center w-full">
+                    <div className="md:flex gap-4 flex-col md:flex-row justify-center w-full">
 
                         <div className="flex gap-4 justify-end items-end flex-col">
-                            <div className="bg-[#171717] w-[400px] rounded-xl p-6 flex justify-between items-center">
+                            <div className="bg-[#171717] md:w-[400px] w-full rounded-xl p-6 flex justify-between items-center">
                                 <span className="text-gray-400 text-sm mb-2">
                                     Average Cost
                                     <br />
@@ -178,13 +178,13 @@ export default function HeroSection() {
                                 <span className="text-[#dadada] text-4xl font-medium">~$0.002</span>
                             </div>
 
-                            <div className="bg-[#171717]  w-[500px] rounded-xl p-6 flex flex-col">
+                            <div className="bg-[#171717]  md:w-[500px] w-full rounded-xl p-6 flex flex-col">
                                 <span className="text-gray-400 text-sm mb-2">Total Transactions</span>
                                 <span className="text-[#dadada] text-right text-4xl md:text-5xl font-medium">514,141,410</span>
                             </div>
                         </div>
 
-                        <div className="bg-[#171717] rounded-xl mt-10 p-6 h-[200px] flex flex-col relative overflow-hidden md:col-span-2 lg:col-span-1 w-[400px]">
+                        <div className="bg-[#171717] rounded-xl mt-10 mb-5 md:mb-0 p-6 h-[200px] flex flex-col relative overflow-hidden md:col-span-2 lg:col-span-1 md:w-[400px] w-full">
                             <div className="absolute inset-0 opacity-30">
                                 <div className="relative w-full h-full bg-[url(/world.webp)] bg-cover bg-no-repeat bg-center">
 
@@ -194,7 +194,7 @@ export default function HeroSection() {
                             <span className="text-[#dadada] mt-[6rem] text-right text-4xl md:text-5xl font-medium z-10">3,621</span>
                         </div>
 
-                        <div className="bg-[#171717] rounded-xl w-[300px] p-6 flex flex-col relative overflow-hidden md:col-span-2 lg:col-span-1">
+                        <div className="bg-[#171717] rounded-xl md:w-[300px] w-full p-6 flex flex-col relative overflow-hidden md:col-span-2 lg:col-span-1">
                             <div className="absolute top-0 right-0 w-1/2 h-full">
                                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2">
                                     <div className="relative w-40 h-40 md:w-48 md:h-48">
@@ -223,8 +223,6 @@ export default function HeroSection() {
                             </div>
                         </div>
                     </div>
-
-  
                     <div className="mt-12 md:mt-16">
                         <p className="text-gray-500 text-center mb-8">
                             Integrations and tools from leading companies around the globe
