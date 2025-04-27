@@ -1,7 +1,9 @@
 
 // components
+import FeaturedSlider from "@/features/home/components/featured-slider"
 import FeaturesSection from "@/features/home/components/features-section"
 import HeroSection from "@/features/home/components/hero-section"
+import PlanetSection from "@/features/home/components/planet-section"
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       </main>
 
       <FeaturesSection />
+      <FeaturedSlider />
+      <PlanetSection />
     </div>
   )
 }

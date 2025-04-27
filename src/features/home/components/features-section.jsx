@@ -31,7 +31,7 @@ function FeaturesSection() {
                 <div className="min-h-screen p-4 md:p-6 lg:p-8 lg:px-28 px-4">
                     <div className="max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
                                 <div className="w-32 h-32 mb-auto">
                                     <div className="relative w-[300px] h-[300px]">
                                         <Image src={grid1} alt='grid1' width={200} height={200} className='absolute -top-20 left-[10px]' />
@@ -45,7 +45,7 @@ function FeaturesSection() {
                             </div>
 
 
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
 
                                 <h3 className="text-white text-center text-[24px] font-medium mt-4">
                                     Safest User
@@ -59,7 +59,7 @@ function FeaturesSection() {
                                 </div>
 
                             </div>
-                            <div className="bg-zinc-900/70 lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 transition-all duration-300">
+                            <div className="bg-[#171717] lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 transition-all duration-300">
                                 <div className='flex gap-2 items-center w-full relative h-full'>
                                     <h3 className="text-white text-[24px] font-medium mt-4 absolute bottom-0">
                                         30%
@@ -75,7 +75,7 @@ function FeaturesSection() {
 
 
 
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
                                 <div className="w-32 h-32 mb-auto">
                                     <div className="relative w-[300px] h-[300px]">
                                         <Image src={grid3} alt='grid1' width={270} height={270} className='absolute -top-30 -right-24' />
@@ -90,7 +90,7 @@ function FeaturesSection() {
                             </div>
 
 
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
                                 <div className="w-32 h-32 mb-auto">
                                     <div className="relative w-[300px] h-[300px]">
                                         <Image src={grid3} alt='grid1' width={270} height={270} className='absolute -top-28 -left-32' />
@@ -107,7 +107,7 @@ function FeaturesSection() {
 
 
 
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
                                 <div className="w-32 h-32 mb-auto">
                                     <div className="relative w-[300px] h-[300px]">
                                         <Image src={grid4} alt='grid1' width={270} height={270} className='absolute bottom-[-50%] transform translate-[-50%] left-[30%]' />
@@ -124,7 +124,7 @@ function FeaturesSection() {
 
 
 
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
                                 <h3 className="text-white text-[24px] font-medium mt-4">
                                     Resilient and
                                     <br />
@@ -140,7 +140,7 @@ function FeaturesSection() {
 
 
 
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
                                 <h3 className="text-white text-[24px] font-medium mt-4">
                                     Resilient and
                                     <br />
@@ -155,7 +155,7 @@ function FeaturesSection() {
                             </div>
 
 
-                            <div className="bg-zinc-900/70 lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300 relative">
+                            <div className="bg-[#171717] lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300 relative">
 
                                 <h3 className="text-white top-[35%] left-[30%] absolute text-[35px] font-medium mt-4">
                                     Sovereign Chains
@@ -170,7 +170,7 @@ function FeaturesSection() {
                             </div>
 
 
-                            <div className="bg-zinc-900/70 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
+                            <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
                                 <div className="w-32 h-32 mb-auto">
                                     <div className="relative w-[300px] h-[300px]">
                                         <Image src={grid8} alt='grid1' width={300} height={300} className='absolute top-0 -left-20' />
