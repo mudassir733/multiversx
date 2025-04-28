@@ -142,11 +142,11 @@ export default function FeaturedSlider() {
                     </div>
                 </div>
 
-                <div ref={sliderRef} className="flex overflow-x-hidden gap-4 hide-scrollbar" onScroll={checkScrollability}>
+                <div ref={sliderRef} className="flex overflow-hidden gap-4" onScroll={checkScrollability}>
                     {newsArticles.map((article) => (
                         <div
                             key={article.id}
-                            className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[250px] border-[#dadada28] hover:bg-[#171717] transition-all duration-300 border-[1px] rounded-xl overflow-hidden p-0"
+                            className="flex-shrink-0  w-[280px] sm:w-[320px] md:w-[250px] border-[#dadada28] hover:bg-[#171717] transition-all duration-300 border-[1px] rounded-xl overflow-hidden p-0"
                         >
                             <a href={article.link} className="block">
                                 <div className="relative h-[140px] w-full overflow-hidden flex items-center justify-center">
