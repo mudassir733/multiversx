@@ -89,15 +89,15 @@ export default function NewsSlider() {
     }
 
     return (
-        <div className="w-full h-screen py-12 md:pl-28 px-4 relative overflow-hidden">
-            <div className="max-w-7xl overflow-hidden mx-auto px-4 sm:px-6">
+        <div className="w-full h-screen py-12 px-4 relative overflow-hidden">
+            <div className="max-w-7xl overflow-hidden mx-auto  sm:px-6">
                 <div className="flex items-center justify-between overflow-hidden mb-8">
                     <h2 className="text-white text-4xl md:text-5xl font-bold">Latest News</h2>
                     <div className="flex items-center gap-2">
                         <Button
                             variant="outline"
                             size="icon"
-                            className={`rounded-full border-zinc-700 bg-zinc-900 ${!canScrollLeft ? "opacity-50 cursor-not-allowed" : "hover:bg-zinc-800"
+                            className={`rounded-md border-zinc-600 bg-zinc-900 ${!canScrollLeft ? "opacity-50 cursor-not-allowed" : "hover:bg-zinc-800"
                                 }`}
                             onClick={() => scroll("left")}
                             disabled={!canScrollLeft}
@@ -108,7 +108,7 @@ export default function NewsSlider() {
                         <Button
                             variant="outline"
                             size="icon"
-                            className={`rounded-full border-zinc-700 bg-zinc-900 ${!canScrollRight ? "opacity-50 cursor-not-allowed" : "hover:bg-zinc-800"
+                            className={`rounded-md border-zinc-600 bg-zinc-900 ${!canScrollRight ? "opacity-50 cursor-not-allowed" : "hover:bg-zinc-800"
                                 }`}
                             onClick={() => scroll("right")}
                             disabled={!canScrollRight}
@@ -116,12 +116,7 @@ export default function NewsSlider() {
                             <ChevronRight className="h-5 w-5 text-white" />
                             <span className="sr-only">Next</span>
                         </Button>
-                        <Button
-                            variant="outline"
-                            className="ml-2 rounded-lg border-zinc-700 bg-zinc-900 text-white hover:bg-zinc-800"
-                        >
-                            View All
-                        </Button>
+
                     </div>
                 </div>
 

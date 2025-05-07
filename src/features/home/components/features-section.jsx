@@ -17,10 +17,10 @@ import { Button } from '@/components/ui/button'
 
 function FeaturesSection() {
     return (
-        <section className='py-20'>
+        <section className='py-20 mt-36'>
             <div className='w-full px-4 flex flex-col items-center justify-center'>
                 <Button className="cursor-pointer text-gray-400 bg-[#0A201D] rounded-full">Builders</Button>
-                <h1 className='pt-2 text-white md:text-[4rem] text-[3rem] leading-16 font-semibold md:w-[650px] text-center'>Let's make this decision easy for you
+                <h1 className='pt-2 text-white md:text-[4rem] text-[3rem] leading-16 font-semibold md:w-[650px] text-center'>Why Sumex?
                 </h1>
 
                 <p className='text-gray-400 text-center pt-6 text-[18px]'>MultiversX provides the infrastructure you need to tackle any use case.</p>
@@ -28,7 +28,7 @@ function FeaturesSection() {
 
 
             <div>
-                <div className="min-h-screen p-4 md:p-6 lg:p-8 lg:px-28 px-4">
+                <div className="min-h-screen p-4 md:p-6 lg:p-8 lg:px-6 px-4">
                     <div className="max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             <div className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300">
