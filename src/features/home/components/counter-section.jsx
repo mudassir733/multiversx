@@ -2,10 +2,12 @@
 
 import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
+import { useParallax } from 'react-scroll-parallax';
 
 export default function CounterSection() {
     const [isVisible, setIsVisible] = useState(false)
     const sectionRef = useRef(null)
+    const { ref } = useParallax({ speed: 15 });
 
     const [projectCount, setProjectCount] = useState(0)
     const [teamCount, setTeamCount] = useState(0)
@@ -125,7 +127,7 @@ export default function CounterSection() {
             ref={sectionRef}
             className="w-full lg:absolute lg:-bottom-[15rem] py-[10rem] z-50 lg:py-20 bg-gradient-to-t from-black via-black to-transparent"
         >
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4" ref={ref}>
                 <motion.div
                     className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 lg:gap-24"
                     variants={containerVariants}

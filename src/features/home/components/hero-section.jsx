@@ -2,6 +2,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import SplitText from "@/components/splitText"
+import { useParallax } from 'react-scroll-parallax';
 
 // assets
 import bg from "@/assets/images/bg.svg"
@@ -10,8 +12,10 @@ import SumLogo from "@/assets/images/SumLogo.png"
 // ui components
 import Header from "@/components/header"
 import CounterSection from "@/features/home/components/counter-section"
+import { useRef } from "react"
 
 export default function HeroSection() {
+    const { ref } = useParallax({ speed: -8 });
 
     const leftContentVariants = {
         hidden: { opacity: 0, x: -100 },
@@ -98,7 +102,7 @@ export default function HeroSection() {
                 <Header />
             </section>
 
-            <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-teal-900 to-black">
+            <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-teal-900 to-black" ref={ref}>
                 <motion.div
                     className="absolute inset-0 w-full h-full"
                     initial={{ opacity: 0 }}
@@ -116,14 +120,26 @@ export default function HeroSection() {
                         animate="visible"
                         variants={leftContentVariants}
                     >
-                        <motion.h1
+                        {/* <motion.h1
                             className="text-5xl text-center lg:text-left md:text-6xl lg:text-7xl font-bold text-white leading-tight"
                             variants={itemVariants}
                         >
                             Your Ultimate
                             <br />
                             Web3 hub
-                        </motion.h1>
+                        </motion.h1> */}
+
+                        <SplitText
+                            text="Your Ultimate Web3 hub"
+                            className="text-5xl text-center lg:text-left md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+                            delay={150}
+                            animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+                            animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+                            easing="easeOutCubic"
+                            threshold={0.2}
+                            rootMargin="-50px"
+
+                        />
 
                         <motion.p
                             className="text-lg md:text-xl text-center lg:text-left text-gray-200 max-w-lg"
