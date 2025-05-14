@@ -39,15 +39,15 @@ export default function FAQSection() {
     }
 
     return (
-        <section className="w-full py-8 sm:py-16">
+        <section className="w-full py-8 sm:py-16 z-50 bg-black inset-10">
             <div className="container mx-auto px-4 sm:px-6">
                 <div className="flex-col lg:flex-row flex  mb-8 sm:mb-10">
-                    <div className="col-span-1">
+                    <div className="col-span-1 z-50 inset-10">
                         <h1 className="text-white font-bold text-center lg:text-left pb-2 text-2xl sm:text-4xl">FAQ</h1>
                         <h2 className="text-gray-400 text-center lg:text-left text-sm sm:text-lg md:text-md mb-6 sm:mb-10">All Your Questions Answered.</h2>
                     </div>
 
-                    <div className="w-full max-w-4xl mx-auto col-span-1">
+                    <div className="w-full max-w-4xl mx-auto col-span-1 z-50 inset-10">
                         {faqs.map((faq, index) => (
                             <div key={index} className="border-t border-zinc-700/90">
                                 <button
@@ -64,7 +64,7 @@ export default function FAQSection() {
                                     className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-60 sm:max-h-96 py-4 sm:pb-6" : "max-h-0"
                                         }`}
                                 >
-                                    <p className="text-gray-600 text-sm sm:text-base">{faq.answer}</p>
+                                    <p className="text-white text-sm sm:text-base">{faq.answer}</p>
                                 </div>
                             </div>
                         ))}

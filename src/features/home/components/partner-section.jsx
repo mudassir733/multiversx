@@ -45,14 +45,14 @@ export default function PartnersSection() {
     const duplicatedPartners = [...partners, ...partners]
 
     return (
-        <section ref={sectionRef} className="w-full">
+        <section ref={sectionRef} className="w-full ">
             <motion.div
                 className="flex items-center justify-center pb-12"
                 initial={{ opacity: 0, y: -30 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
                 transition={{ duration: 0.8 }}
             >
-                <h1 className="pt-2 text-white md:text-[4rem] text-[3rem] leading-16 font-semibold md:w-[650px] text-center">
+                <h1 className="pt-2 text-white md:text-[4rem] z-50 inset-10 text-[3rem] leading-16 font-semibold md:w-[650px] text-center">
                     Our Partner
                 </h1>
             </motion.div>
@@ -122,16 +122,16 @@ export default function PartnersSection() {
             </div>
 
             <motion.div
-                className="w-full py-12 px-4"
+                className="w-full py-12 px-4 z-50 inset-10"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
             >
-                <div className="container mx-auto flex justify-center">
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <div className="container mx-auto z-50 inset-10 flex justify-center ">
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="z-50 inset-10">
                         <Link
                             href="#"
-                            className="bg-teal-400 hover:bg-teal-500 text-black font-semibold py-3 px-12 rounded-md transition-colors duration-300 text-center min-w-[200px]"
+                            className="bg-teal-400 hover:bg-teal-500  text-black font-semibold py-3 px-12 rounded-md transition-colors duration-300 text-center min-w-[200px]"
                         >
                             VIEW ALL
                         </Link>

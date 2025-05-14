@@ -102,15 +102,15 @@ export default function HeroSection() {
                 <Header />
             </section>
 
-            <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-teal-900 to-black" ref={ref}>
-                <motion.div
+            <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br " ref={ref}>
+                {/* <motion.div
                     className="absolute inset-0 w-full h-full"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1.5 }}
                 >
                     <Image src={bg || "/placeholder.svg"} alt="background" />
-                </motion.div>
+                </motion.div> */}
 
                 <div className="relative z-10 container mx-auto px-6 py-16 flex flex-col md:flex-row items-center min-h-screen">
 

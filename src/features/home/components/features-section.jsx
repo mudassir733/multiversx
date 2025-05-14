@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useParallax } from 'react-scroll-parallax';
+import { Tilt } from "react-tilt";
 
 // assets
 import grid1 from "@/assets/images/grid1.webp"
@@ -22,6 +23,7 @@ function FeaturesSection() {
     const [isVisible, setIsVisible] = useState(false)
     const sectionRef = useRef(null)
     const { ref } = useParallax({ speed: -20 });
+    const [glowPositions, setGlowPositions] = useState(Array(10).fill({ x: -1000, y: -1000 })); // Initialize for 10 cards
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -121,9 +123,29 @@ function FeaturesSection() {
         },
     }
 
+    // Glow effect handler
+    const handleMouseMove = (e, index) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        setGlowPositions(prev => {
+            const newPositions = [...prev];
+            newPositions[index] = { x, y };
+            return newPositions;
+        });
+    };
+
+    const handleMouseLeave = (index) => {
+        setGlowPositions(prev => {
+            const newPositions = [...prev];
+            newPositions[index] = { x: -1000, y: -1000 };
+            return newPositions;
+        });
+    };
+
     return (
         <div ref={ref}>
-            <section ref={sectionRef} className="lg:py-20 pb-20 lg:pb-0 lg:mt-36" >
+            <section ref={sectionRef} className="lg:py-20 pb-20 lg:pb-0 lg:mt-36">
                 <motion.div
                     className="w-full px-4 flex flex-col items-center justify-center"
                     variants={headerVariants}
@@ -139,7 +161,7 @@ function FeaturesSection() {
                     </p>
                 </motion.div>
 
-                <div >
+                <div>
                     <div className="min-h-screen p-4 md:p-6 lg:p-8 lg:px-6 px-4">
                         <motion.div
                             className="max-w-7xl mx-auto"
@@ -148,259 +170,104 @@ function FeaturesSection() {
                             animate={isVisible ? "visible" : "hidden"}
                         >
                             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromLeftVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[300px] h-[300px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid1 || "/placeholder.svg"}
-                                                    alt="grid1"
-                                                    width={200}
-                                                    height={200}
-                                                    className="absolute -top-20 left-[10px]"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                    <h3 className="text-white text-[24px] font-medium mt-4">
-                                        Native
-                                        <br />
-                                        Assets
-                                    </h3>
-                                </motion.div>
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromRightVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <h3 className="text-white text-center text-[24px] font-medium mt-4">
-                                        Safest User
-                                        <br />
-                                        Experience
-                                    </h3>
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[300px] h-[300px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid2 || "/placeholder.svg"}
-                                                    alt="grid2"
-                                                    width={240}
-                                                    height={240}
-                                                    className="absolute -bottom-0 left-[10px]"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                </motion.div>
-
-
-                                <motion.div
-                                    className="bg-[#171717] lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 transition-all duration-300"
-                                    variants={fromBottomVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <div className="flex gap-2 items-center w-full relative h-full">
-                                        <h3 className="text-white text-[24px] font-medium mt-4 absolute bottom-0">
-                                            30%
-                                            <br />
-                                            Developer
-                                            <br />
-                                            Royalties
-                                        </h3>
-                                        <p className="text-gray-400 w-[200px] absolute lg:bottom-0 lg:right-20">
-                                            Developers get 30% of the gas fee every time someone calls their smart contract
-                                        </p>
-                                    </div>
-                                </motion.div>
-
-
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromLeftVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[300px] h-[300px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid3 || "/placeholder.svg"}
-                                                    alt="grid3"
-                                                    width={270}
-                                                    height={270}
-                                                    className="absolute -top-30 -right-24"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                    <h3 className="text-white text-[24px] font-medium mt-4">
-                                        Adaptive State
-                                        <br />
-                                        Sharding
-                                    </h3>
-                                    <p className="text-gray-400 pt-2">
-                                        The first to present a viable solution where all three aspects of sharding are live
-                                    </p>
-                                </motion.div>
-
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromRightVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[300px] h-[300px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid3 || "/placeholder.svg"}
-                                                    alt="grid3"
-                                                    width={270}
-                                                    height={270}
-                                                    className="absolute -top-28 -left-32"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                    <h3 className="text-white text-[24px] font-medium mt-4">
-                                        Adaptive State
-                                        <br />
-                                        Sharding
-                                    </h3>
-                                    <p className="text-gray-400 pt-2">
-                                        The first to present a viable solution where all three aspects of sharding are live
-                                    </p>
-                                </motion.div>
-
-
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromBottomVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[300px] h-[300px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid4 || "/placeholder.svg"}
-                                                    alt="grid4"
-                                                    width={270}
-                                                    height={270}
-                                                    className="absolute bottom-[-50%] transform translate-[-50%] left-[30%]"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                    <h3 className="text-white text-[24px] font-medium mt-4">
-                                        Adaptive State
-                                        <br />
-                                        Sharding
-                                    </h3>
-                                    <p className="text-gray-400 pt-2">
-                                        The first to present a viable solution where all three aspects of sharding are live
-                                    </p>
-                                </motion.div>
-
-
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromLeftVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <h3 className="text-white text-[24px] font-medium mt-4">
-                                        Resilient and
-                                        <br />
-                                        Battle-Tested
-                                    </h3>
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[300px] h-[300px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid5 || "/placeholder.svg"}
-                                                    alt="grid5"
-                                                    width={270}
-                                                    height={270}
-                                                    className="absolute -bottom-0 right-0"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                </motion.div>
-
-
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromRightVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <h3 className="text-white text-[24px] font-medium mt-4">
-                                        Resilient and
-                                        <br />
-                                        Battle-Tested
-                                    </h3>
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[350px] h-[350px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid6 || "/placeholder.svg"}
-                                                    alt="grid6"
-                                                    width={350}
-                                                    height={350}
-                                                    className="absolute bottom-10 right-10"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                </motion.div>
-
-
-                                <motion.div
-                                    className="bg-[#171717] lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300 relative"
-                                    variants={fromBottomVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <h3 className="text-white top-[35%] left-[30%] absolute text-[35px] font-medium mt-4">
-                                        Sovereign Chains
-                                    </h3>
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[700px] h-[700px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid7 || "/placeholder.svg"}
-                                                    alt="grid7"
-                                                    width={700}
-                                                    height={700}
-                                                    className="absolute -top-[20%] right-10"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                </motion.div>
-
-
-                                <motion.div
-                                    className="bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300"
-                                    variants={fromLeftVariants}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
-                                        <div className="relative w-[300px] h-[300px]">
-                                            <motion.div >
-                                                <Image
-                                                    src={grid8 || "/placeholder.svg"}
-                                                    alt="grid8"
-                                                    width={300}
-                                                    height={300}
-                                                    className="absolute top-0 -left-20"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </motion.div>
-                                    <h3 className="text-white text-center text-[24px] font-medium mt-4">Decentralized</h3>
-                                    <p className="text-gray-400 text-center">3,200+ validator nodes</p>
-                                </motion.div>
+                                {[
+                                    { image: grid1, title: "Native<br />Assets", variants: fromLeftVariants, imageClass: "absolute -top-20 left-[10px]", width: 200, height: 200 },
+                                    { image: grid2, title: "Safest User<br />Experience", variants: fromRightVariants, imageClass: "absolute -bottom-0 left-[10px]", width: 240, height: 240, reverse: true },
+                                    { image: null, title: "30%<br />Developer<br />Royalties", variants: fromBottomVariants, description: "Developers get 30% of the gas fee every time someone calls their smart contract", colSpan: "lg:col-span-2", custom: true },
+                                    { image: grid3, title: "Adaptive State<br />Sharding", variants: fromLeftVariants, imageClass: "absolute -top-30 -right-24", width: 270, height: 270, description: "The first to present a viable solution where all three aspects of sharding are live" },
+                                    { image: grid3, title: "Adaptive State<br />Sharding", variants: fromRightVariants, imageClass: "absolute -top-28 -left-32", width: 270, height: 270, description: "The first to present a viable solution where all three aspects of sharding are live" },
+                                    { image: grid4, title: "Adaptive State<br />Sharding", variants: fromBottomVariants, imageClass: "absolute bottom-[-50%] transform translate-[-50%] left-[30%]", width: 270, height: 270, description: "The first to present a viable solution where all three aspects of sharding are live" },
+                                    { image: grid5, title: "Resilient and<br />Battle-Tested", variants: fromLeftVariants, imageClass: "absolute -bottom-0 right-0", width: 270, height: 270, reverse: true },
+                                    { image: grid6, title: "Resilient and<br />Battle-Tested", variants: fromRightVariants, imageClass: "absolute bottom-10 right-10", width: 350, height: 350, reverse: true },
+                                    { image: grid7, title: "Sovereign Chains", variants: fromBottomVariants, imageClass: "absolute -top-[20%] right-10", width: 700, height: 700, colSpan: "lg:col-span-2", custom: true },
+                                    { image: grid8, title: "Decentralized", variants: fromLeftVariants, imageClass: "absolute top-0 -left-20", width: 300, height: 300, description: "3,200+ validator nodes", centered: true },
+                                ].map((card, index) => (
+                                    <Tilt
+                                        key={index}
+                                        options={{
+                                            max: 45,
+                                            scale: 1,
+                                            speed: 450,
+                                        }}
+                                        className={`${card.colSpan || " rounded-3xl flex flex-col justify-between  bg-zinc-800/90 overflow-hidden transition-all duration-300 relative"} ${card.custom ? " rounded-3xl flex flex-col justify-between h-[340px] bg-zinc-800/90 overflow-hidden transition-all duration-300 relative" : ""}`}
+                                    >
+                                        <motion.div
+                                            className={`bg-[#171717] rounded-3xl p-6 flex flex-col justify-between h-[340px] hover:bg-zinc-800/90 overflow-hidden transition-all duration-300 relative ${card.colSpan || ""}`}
+                                            variants={card.variants}
+                                            whileHover={{ y: -5 }}
+                                            onMouseMove={(e) => handleMouseMove(e, index)}
+                                            onMouseLeave={() => handleMouseLeave(index)}
+                                            style={{
+                                                background: `radial-gradient(circle 100px at ${glowPositions[index].x}px ${glowPositions[index].y}px, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%)`,
+                                            }}
+                                        >
+                                            {card.custom ? (
+                                                card.title === "30% Developer Royalties" ? (
+                                                    <div className="flex gap-2 items-center w-full relative h-full">
+                                                        <h3 className="text-white text-[24px] font-medium mt-4 absolute bottom-0" dangerouslySetInnerHTML={{ __html: card.title }} />
+                                                        <p className="text-gray-400 w-[200px] absolute lg:bottom-0 lg:right-20">{card.description}</p>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <h3 className="text-white top-[35%] left-[30%] absolute text-[35px] font-medium mt-4" dangerouslySetInnerHTML={{ __html: card.title }} />
+                                                        <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
+                                                            <div className="relative w-[700px] h-[700px]">
+                                                                <motion.div>
+                                                                    <Image
+                                                                        src={card.image || grid1}
+                                                                        alt={`grid${index + 1}`}
+                                                                        width={card.width}
+                                                                        height={card.height}
+                                                                        className={card.imageClass}
+                                                                    />
+                                                                </motion.div>
+                                                            </div>
+                                                        </motion.div>
+                                                    </>
+                                                )
+                                            ) : (
+                                                <>
+                                                    {card.reverse ? (
+                                                        <>
+                                                            <h3 className={`${card.centered ? "text-center" : ""} text-white text-[24px] font-medium mt-4`} dangerouslySetInnerHTML={{ __html: card.title }} />
+                                                            <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
+                                                                <div className={`relative ${card.width > 300 ? "w-[350px] h-[350px]" : "w-[300px] h-[300px]"}`}>
+                                                                    <motion.div>
+                                                                        <Image
+                                                                            src={card.image || grid2}
+                                                                            alt={`grid${index + 1}`}
+                                                                            width={card.width}
+                                                                            height={card.height}
+                                                                            className={card.imageClass}
+                                                                        />
+                                                                    </motion.div>
+                                                                </div>
+                                                            </motion.div>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <motion.div className="w-32 h-32 mb-auto" variants={imageHoverVariants} initial="initial" whileHover="hover">
+                                                                <div className={`relative ${card.width > 300 ? "w-[700px] h-[700px]" : "w-[300px] h-[300px]"}`}>
+                                                                    <motion.div>
+                                                                        <Image
+                                                                            src={card.image || grid3}
+                                                                            alt={`grid${index + 1}`}
+                                                                            width={card.width}
+                                                                            height={card.height}
+                                                                            className={card.imageClass}
+                                                                        />
+                                                                    </motion.div>
+                                                                </div>
+                                                            </motion.div>
+                                                            <h3 className={`${card.centered ? "text-center" : ""} text-white text-[24px] font-medium mt-4`} dangerouslySetInnerHTML={{ __html: card.title }} />
+                                                        </>
+                                                    )}
+                                                    {card.description && <p className={`${card.centered ? "text-center" : ""} text-gray-400 pt-2`}>{card.description}</p>}
+                                                </>
+                                            )}
+                                        </motion.div>
+                                    </Tilt>
+                                ))}
                             </div>
                         </motion.div>
                     </div>

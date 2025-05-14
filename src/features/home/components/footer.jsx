@@ -226,7 +226,7 @@ export default function FooterNewsletter() {
 
     return (
         <section ref={footerRef} className="relative mt-[50rem] lg:mt-0 md:mt-0" onMouseMove={handleMouseMove}>
-            <footer className="w-full bg-black rounded-4xl">
+            <footer className="w-full rounded-4xl">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}

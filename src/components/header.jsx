@@ -15,7 +15,7 @@ const Particle = ({ index }) => {
 
     return (
         <motion.div
-            className="absolute rounded-full bg-teal-500/30"
+            className="absolute rounded-full bg-teal-200/30"
             style={{
                 width: size,
                 height: size,
@@ -264,7 +264,7 @@ export default function Header() {
 
     return (
         <motion.section
-            className="w-full bg-black pb-20 px-6 sticky top-0 z-[9999]"
+            className="w-full pb-20 px-6 sticky top-0 z-[9999]"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

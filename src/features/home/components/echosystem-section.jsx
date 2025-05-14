@@ -75,19 +75,19 @@ function EcosystemSection() {
     }
 
     return (
-        <div >
-            <div ref={sectionRef}>
+        <div className="">
+            <div ref={sectionRef} className="z-50 inset-10">
                 <motion.div
                     className="w-full mb-[10rem] lg:mb-0 px-4 flex flex-col items-center justify-center"
                     variants={headerVariants}
                     initial="hidden"
                     animate={isVisible ? "visible" : "hidden"}
                 >
-                    <h1 className="pt-2 text-white md:text-[4rem] text-[3rem] leading-16 font-semibold md:w-[650px] text-center">
+                    <h1 className="pt-2 text-white z-50 inset-10 md:text-[4rem] text-[3rem] leading-16 font-semibold md:w-[650px] text-center">
                         Explore the ecosystem
                     </h1>
 
-                    <p className="text-gray-400 text-center pt-6 text-[18px]">
+                    <p className="text-gray-400 z-50 inset-10 text-center pt-6 text-[18px]">
                         MultiversX provides the infrastructure you need to tackle any use case.
                     </p>
                 </motion.div>

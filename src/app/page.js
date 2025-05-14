@@ -1,4 +1,6 @@
 
+
+
 // components
 import CTASection from "@/features/home/components/cta-section"
 import EchosystemSection from "@/features/home/components/echosystem-section"
@@ -11,49 +13,56 @@ import PartnersSection from "@/features/home/components/partner-section"
 import PlanetSection from "@/features/home/components/planet-section"
 import RewardsSection from "@/features/home/components/rewards-section"
 import ScrollSection from "@/components/scrollSection"
+import AnimatedBackground from "@/components/animatedBackground"
 
 export default function Home() {
   return (
-    <div className="bg-black">
-      <ScrollSection>
-        <HeroSection />
-      </ScrollSection>
+    <div className="bg-black  min-h-screen">
 
-      <ScrollSection>
-        <FeaturesSection />
-      </ScrollSection>
+      <div className="fixed inset-0 z-0">
+        <AnimatedBackground />
+      </div>
+      <div className=" z-10">
+        <ScrollSection>
+          <HeroSection />
+        </ScrollSection>
 
-      <ScrollSection>
-        <PlanetSection />
-      </ScrollSection>
+        <ScrollSection>
+          <FeaturesSection />
+        </ScrollSection>
 
-      <ScrollSection>
-        <EchosystemSection />
-      </ScrollSection>
+        <ScrollSection>
+          <PlanetSection />
+        </ScrollSection>
 
-      <ScrollSection>
-        <RewardsSection />
-      </ScrollSection>
+        <ScrollSection>
+          <EchosystemSection />
+        </ScrollSection>
 
-      <ScrollSection>
-        <PartnersSection />
-      </ScrollSection>
+        <ScrollSection>
+          <RewardsSection />
+        </ScrollSection>
 
-      <ScrollSection>
-        <NewsSlider />
-      </ScrollSection>
+        <ScrollSection>
+          <PartnersSection />
+        </ScrollSection>
 
-      <ScrollSection>
-        <CTASection />
-      </ScrollSection>
+        <ScrollSection>
+          <NewsSlider />
+        </ScrollSection>
 
-      <ScrollSection>
-        <FAQSection />
-      </ScrollSection>
+        <ScrollSection>
+          <CTASection />
+        </ScrollSection>
 
-      <ScrollSection>
-        <FooterNewsletter />
-      </ScrollSection>
+        <ScrollSection>
+          <FAQSection />
+        </ScrollSection>
+
+        <ScrollSection>
+          <FooterNewsletter />
+        </ScrollSection>
+      </div>
     </div>
   )
 }

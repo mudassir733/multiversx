@@ -1,9 +1,12 @@
+// app/layout.jsx
 "use client"
 
 import { Geist, Geist_Mono } from "next/font/google"
 import LoadingScreen from "@/components/loading"
 import { useState, useEffect } from "react"
-import { ParallaxProvider } from 'react-scroll-parallax';
+import { ParallaxProvider } from "react-scroll-parallax"
+import { usePathname } from "next/navigation"
+import Lenis from "lenis"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -23,18 +26,51 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   const [isLoadingComplete, setIsLoadingComplete] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoadingComplete(true), 5500)
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 3,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smooth: true,
+      smoothTouch: true,
+      touchMultiplier: 2,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isLoadingComplete) {
+      const lenis = new Lenis()
+      lenis.scrollTo(0, { immediate: true })
+    }
+  }, [pathname, isLoadingComplete])
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ParallaxProvider>
-
-          {!isLoadingComplete ? <LoadingScreen /> : children}
+          <main >
+            {!isLoadingComplete ? <LoadingScreen /> : children}
+          </main>
         </ParallaxProvider>
       </body>
     </html>
