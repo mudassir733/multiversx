@@ -1,17 +1,16 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
-import { ChevronDown, Menu, X, ExternalLink, Search } from "lucide-react"
-import Image from "next/image"
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { ChevronDown, Menu, X, ExternalLink, Search } from "lucide-react";
+import Image from "next/image";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 
-import logo from "@/assets/images/logo.svg"
-
+import logo from "@/assets/images/logo.svg";
 
 const Particle = ({ index }) => {
-    const size = Math.random() * 3 + 1
-    const speed = Math.random() * 0.5 + 0.1
+    const size = Math.random() * 3 + 1;
+    const speed = Math.random() * 0.5 + 0.1;
 
     return (
         <motion.div
@@ -32,38 +31,33 @@ const Particle = ({ index }) => {
                 delay: index * 0.2,
             }}
         />
-    )
-}
+    );
+};
 
 export default function Header() {
-    const [isOpen, setIsOpen] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
-    const [activeDropdown, setActiveDropdown] = useState(null)
-    const [searchActive, setSearchActive] = useState(false)
-    const [searchQuery, setSearchQuery] = useState("")
-    const headerRef = useRef(null)
-    const { scrollY } = useScroll()
-    const searchInputRef = useRef(null)
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
+    const [searchActive, setSearchActive] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const headerRef = useRef(null);
+    const { scrollY } = useScroll();
+    const searchInputRef = useRef(null);
 
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
 
-    const mouseX = useMotionValue(0)
-    const mouseY = useMotionValue(0)
+    const springConfig = { damping: 20, stiffness: 300 };
+    const rotateX = useSpring(useTransform(mouseY, [0, window?.innerHeight || 1000], [2, -2]), springConfig);
+    const rotateY = useSpring(useTransform(mouseX, [0, window?.innerWidth || 1000], [-2, 2]), springConfig);
 
-
-    const springConfig = { damping: 20, stiffness: 300 }
-    const rotateX = useSpring(useTransform(mouseY, [0, window?.innerHeight || 1000], [2, -2]), springConfig)
-    const rotateY = useSpring(useTransform(mouseX, [0, window?.innerWidth || 1000], [-2, 2]), springConfig)
-
-
-    const headerOpacity = useTransform(scrollY, [0, 50], [1, 0.98])
-    const headerScale = useTransform(scrollY, [0, 50], [1, 0.98])
-    const headerY = useTransform(scrollY, [0, 50], [0, -5])
-    const headerBlur = useTransform(scrollY, [0, 100], [0, 10])
-    const headerBgOpacity = useTransform(scrollY, [0, 100], [0.1, 0.8])
-
+    const headerOpacity = useTransform(scrollY, [0, 50], [1, 0.98]);
+    const headerScale = useTransform(scrollY, [0, 50], [1, 0.98]);
+    const headerY = useTransform(scrollY, [0, 50], [0, -5]);
+    const headerBlur = useTransform(scrollY, [0, 100], [0, 10]);
+    const headerBgOpacity = useTransform(scrollY, [0, 100], [0.1, 0.8]);
 
     const [docHeight, setDocHeight] = useState(0);
-
 
     useEffect(() => {
         const updateHeight = () => {
@@ -77,51 +71,46 @@ export default function Header() {
         return () => window.removeEventListener("resize", updateHeight);
     }, []);
 
-
-    const scrollProgress = useTransform(
-        scrollY,
-        [0, docHeight],
-        [0, 1]
-    );
+    const scrollProgress = useTransform(scrollY, [0, docHeight], [0, 1]);
 
     const handleMouseMove = (e) => {
-        const { clientX, clientY } = e
+        const { clientX, clientY } = e;
         const { left, top, width, height } = headerRef.current?.getBoundingClientRect() || {
             left: 0,
             top: 0,
             width: 0,
             height: 0,
-        }
+        };
 
-        const x = clientX - left - width / 2
-        const y = clientY - top - height / 2
+        const x = clientX - left - width / 2;
+        const y = clientY - top - height / 2;
 
-        mouseX.set(x)
-        mouseY.set(y)
-    }
+        mouseX.set(x);
+        mouseY.set(y);
+    };
 
     const handleMouseLeave = () => {
-        mouseX.set(0)
-        mouseY.set(0)
-    }
+        mouseX.set(0);
+        mouseY.set(0);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20)
-        }
+            setScrolled(window.scrollY > 20);
+        };
 
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         if (searchActive && searchInputRef.current) {
-            searchInputRef.current.focus()
+            searchInputRef.current.focus();
         }
-    }, [searchActive])
+    }, [searchActive]);
 
     // Generate particles
-    const particles = Array.from({ length: 15 }).map((_, index) => <Particle key={index} index={index} />)
+    const particles = Array.from({ length: 15 }).map((_, index) => <Particle key={index} index={index} />);
 
     // Animation variants
     const navItemVariants = {
@@ -141,7 +130,7 @@ export default function Header() {
             color: "#fff",
             transition: { duration: 0.2 },
         },
-    }
+    };
 
     const dropdownVariants = {
         hidden: { opacity: 0, y: -5, scale: 0.95 },
@@ -163,7 +152,7 @@ export default function Header() {
             scale: 0.95,
             transition: { duration: 0.2 },
         },
-    }
+    };
 
     const dropdownItemVariants = {
         hidden: { opacity: 0, x: -10 },
@@ -172,7 +161,7 @@ export default function Header() {
             x: 0,
             transition: { duration: 0.2 },
         },
-    }
+    };
 
     const mobileMenuVariants = {
         hidden: { opacity: 0, x: "100%" },
@@ -192,7 +181,7 @@ export default function Header() {
             x: "100%",
             transition: { duration: 0.3 },
         },
-    }
+    };
 
     const mobileItemVariants = {
         hidden: { opacity: 0, x: 20 },
@@ -201,7 +190,7 @@ export default function Header() {
             x: 0,
             transition: { duration: 0.3, type: "spring", stiffness: 100 },
         },
-    }
+    };
 
     const searchVariants = {
         hidden: { opacity: 0, width: 0 },
@@ -215,7 +204,7 @@ export default function Header() {
             width: 0,
             transition: { duration: 0.3 },
         },
-    }
+    };
 
     const logoVariants = {
         initial: { opacity: 0, scale: 0.8, rotate: -5 },
@@ -235,41 +224,40 @@ export default function Header() {
             rotate: 5,
             transition: { duration: 0.3 },
         },
-    }
+    };
 
     const navItems = [
-        { name: "Ecosystem", href: "/ecosystem", dropdown: null },
+        { name: "Ecosystem", href: "/#", dropdown: null },
         {
             name: "Academy",
             dropdown: [
-                { name: "Courses", href: "/academy/courses" },
-                { name: "Tutorials", href: "/academy/tutorials" },
+                { name: "Courses", href: "#" },
+                { name: "Tutorials", href: "#" },
             ],
         },
         {
             name: "Community",
             dropdown: [
-                { name: "Forum", href: "/community/forum" },
-                { name: "Events", href: "/community/events" },
+                { name: "Forum", href: "#" },
+                { name: "Events", href: "#" },
             ],
         },
         {
             name: "About",
             dropdown: [
-                { name: "Team", href: "/about/team" },
-                { name: "Mission", href: "/about/mission" },
+                { name: "Team", href: "#" },
+                { name: "Mission", href: "#" },
             ],
         },
-    ]
+    ];
 
     return (
         <motion.section
-            className="w-full pb-20 px-6 sticky top-0 z-[9999]"
+            className="w-full pb-20 px-6 sticky top-0 z-[8888]"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-
             <motion.div
                 className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-white to-teal-300 z-[10000]"
                 style={{ scaleX: scrollProgress, transformOrigin: "0% 50%" }}
@@ -277,7 +265,7 @@ export default function Header() {
 
             <motion.header
                 ref={headerRef}
-                className={`md:w-full border border-gray-800 rounded-lg px-4 lg:px-16 py-3 mx-auto my-2 max-w-7xl transition-all duration-300 overflow-hidden relative`}
+                className={`md:w-full border border-gray-800 rounded-lg px-4 lg:px-16 py-3 mx-auto my-2 max-w-7xl transition-all duration-300 relative`}
                 style={{
                     opacity: headerOpacity,
                     scale: headerScale,
@@ -293,7 +281,9 @@ export default function Header() {
                 onMouseLeave={handleMouseLeave}
             >
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">{particles}</div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        {particles}
+                    </div>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -361,7 +351,12 @@ export default function Header() {
                                                     <AnimatePresence>
                                                         {activeDropdown === item.name && (
                                                             <motion.div
-                                                                className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-gray-900/90 backdrop-blur-sm border border-gray-800 z-50"
+                                                                className="absolute left-0 w-48 rounded-md shadow-lg bg-gray-900/90 backdrop-blur-sm border border-gray-800"
+                                                                style={{
+                                                                    top: "180%", // Position above the button
+                                                                    transform: "translateY(-10px)", // Slight offset for better alignment
+                                                                    zIndex: 10001, // Higher than header z-index
+                                                                }}
                                                                 variants={dropdownVariants}
                                                                 initial="hidden"
                                                                 animate="visible"
@@ -511,5 +506,5 @@ export default function Header() {
                 </AnimatePresence>
             </motion.header>
         </motion.section>
-    )
+    );
 }

@@ -117,7 +117,7 @@ export default function HeroSection() {
                 <div className="relative z-10 container mx-auto px-6 py-16 flex flex-col md:flex-row items-center min-h-screen">
 
                     <motion.div
-                        className="w-full md:w-1/2 space-y-6 md:pr-8"
+                        className="w-full md:w-1/2 space-y-6 md:pr-8 text-center lg:text-left"
                         initial="hidden"
                         animate="visible"
                         variants={leftContentVariants}
