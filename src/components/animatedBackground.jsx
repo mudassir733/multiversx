@@ -136,7 +136,7 @@ export default function AnimatedBackground() {
 
 
                     <motion.div
-                        className="absolute bg-gray-300 rounded-full"
+                        className="absolute bg-[#46ecd5] rounded-full"
                         style={{
                             width: dimensions.width * 0.45,
                             height: dimensions.width * 0.45,

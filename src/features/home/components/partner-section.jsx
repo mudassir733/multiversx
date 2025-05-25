@@ -57,7 +57,7 @@ export default function PartnersSection() {
                 </h1>
             </motion.div>
 
-            <div className="w-full bg-teal-800 py-8 px-4 overflow-hidden" ref={ref}>
+            <div className="w-full bg-zinc-800/90 py-8 px-4 overflow-hidden" ref={ref}>
                 <div className="container mx-auto relative">
                     <motion.div
                         className="flex items-center gap-16 md:gap-20"

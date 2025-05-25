@@ -13,6 +13,7 @@ import SumLogo from "@/assets/images/SumLogo.png"
 import Header from "@/components/header"
 import CounterSection from "@/features/home/components/counter-section"
 import { useRef } from "react"
+import GlowAndThreeWaves from "./GlowAndThreeWaves"
 
 export default function HeroSection() {
     const { ref } = useParallax({ speed: -8 });
@@ -111,6 +112,7 @@ export default function HeroSection() {
                 >
                     <Image src={bg || "/placeholder.svg"} alt="background" />
                 </motion.div> */}
+                <GlowAndThreeWaves />
 
                 <div className="relative z-10 container mx-auto px-6 py-16 flex flex-col md:flex-row items-center min-h-screen">
 

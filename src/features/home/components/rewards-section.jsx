@@ -191,7 +191,7 @@ export default function RewardsSection() {
                         </p>
                     </motion.div>
 
-                    <div className="relative bg-[#0a2f2a] w-full py-16 overflow-hidden mt-8">
+                    <div className="relative bg-zinc-800/90 w-full py-16 overflow-hidden mt-8">
                         <motion.div className="absolute top-0 left-0 w-32 h-32" animate="up" variants={floatingVariants}>
                             <Image src={el1 || "/placeholder.svg"} alt="el1" />
                         </motion.div>

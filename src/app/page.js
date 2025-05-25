@@ -15,6 +15,9 @@ import RewardsSection from "@/features/home/components/rewards-section"
 import ScrollSection from "@/components/scrollSection"
 import AnimatedBackground from "@/components/animatedBackground"
 
+
+
+
 export default function Home() {
   return (
     <div className="bg-black  min-h-screen">
@@ -30,6 +33,7 @@ export default function Home() {
         <ScrollSection>
           <FeaturesSection />
         </ScrollSection>
+
 
         <ScrollSection>
           <PlanetSection />
